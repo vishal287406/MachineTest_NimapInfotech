@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MachineCode_NimapInfotech.Models.CategoryModel>
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/index.css" />
+}
+
+<div class="ContainerDiv">
+    <h2 class="Heading">Category Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+                <th colspan="2">Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryId</td>
+                    <td>@item.CategoryName</td>
+                    <td>@Html.ActionLink("Update", "Update", "Category", new { id = item.CategoryId },null)</td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Category",new { id = item.CategoryId },null)</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4">@Html.ActionLink("Insert a new Record", "Create", "Category")</td>
+            </tr>
+        </tbody>
+    </table>
+ 
+</div>

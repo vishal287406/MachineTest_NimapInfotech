@@ -1,0 +1,23 @@
+﻿@model MachineCode_NimapInfotech.Models.CategoryModel
+
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/create.css" />
+}
+<div class="con">
+    <form method="post" action="/Category/Update">
+        <h2 class="heading">Update Category Record</h2>
+        <div class="cell">
+            <p>Category Id</p>
+            @Html.TextBoxFor(m => m.CategoryId, new { @readonly=true,@class="fields readonlycolor"})
+            @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "validation" })
+        </div>
+        <div class="cell">
+            <p>Category Name</p>
+            @Html.TextBoxFor(m => m.CategoryName, new { @class = "fields" })
+            @Html.ValidationMessageFor(m => m.CategoryName, null, new { @class = "validation" })
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+

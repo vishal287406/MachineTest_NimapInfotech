@@ -1,0 +1,30 @@
+﻿@model MachineCode_NimapInfotech.Models.ProductModel
+
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/create.css" />
+}
+<div class="con">
+    <form method="post" action="/Product/Delete">
+        <input type="hidden" value="@Model.ProductId" name="id" />
+        <h2 class="heading">Delete Record</h2>
+        <div class="cell">
+            <h3>Do you really want to delete this product record ?</h3>
+        </div>
+        <div class="cell">
+            <p><strong>Product Id</strong> : @Model.ProductId</p>
+        </div>
+        <div class="cell">
+            <p><strong>Product Name</strong> : @Model.ProductName</p>
+        </div>
+        <div class="cell">
+            <p><strong>Category Id</strong> : @Model.Category.CategoryId</p>
+        </div>
+        <div class="cell">
+            <p><strong>Category Name</strong> : @Model.Category.CategoryName</p>
+        </div>
+        <button type="submit">Yes Delete</button>
+    </form>
+</div>
+
+

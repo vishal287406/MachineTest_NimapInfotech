@@ -1,0 +1,22 @@
+﻿@model MachineCode_NimapInfotech.Models.ProductModel
+
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/create.css" />
+}
+<div class="con">
+    <form method="post" action="/Product/Update">
+        <h2 class="heading">Update Product Record</h2>
+        <div class="cell">
+            <p>Product Id</p>
+            @Html.TextBoxFor(m => m.ProductId, new { @readonly = true, @class = "fields readonlycolor" })
+            @Html.ValidationMessageFor(m => m.ProductId, null, new { @class = "validation" })
+        </div>
+        <div class="cell">
+            <p>Product Name</p>
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "fields" })
+            @Html.ValidationMessageFor(m => m.ProductName, null, new { @class = "validation" })
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

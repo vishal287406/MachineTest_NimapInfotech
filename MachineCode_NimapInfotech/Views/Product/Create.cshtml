@@ -1,0 +1,26 @@
+﻿@model MachineCode_NimapInfotech.Models.ProductModel
+
+@{ 
+    var listofCatagories = ViewData["listofCatagories"] as SelectList;
+}
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/create.css" />
+}
+<div class="con">
+    <form method="post" action="/Product/Create">
+        <h2 class="heading">Insert Product Record</h2>
+        <div class="cell">
+            <p>Product Name</p>
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "fields" })
+            @Html.ValidationMessageFor(m => m.ProductName, null, new { @class = "validation" })
+        </div>
+        <div class="cell">
+            <p>Select Category</p>
+            @Html.DropDownListFor(m=>m.CategoryId,listofCatagories,"Select a Category")
+            @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "validation" })
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+

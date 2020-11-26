@@ -1,0 +1,24 @@
+﻿@model MachineCode_NimapInfotech.Models.CategoryModel
+
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/create.css" />
+}
+<div class="con">
+    <form method="post" action="/Category/Delete">
+        <input type="hidden" value="@Model.CategoryId" name="id" />
+        <h2 class="heading">Delete Record</h2>
+        <div class="cell">
+            <h3>Do you really want to delete this category record ?</h3>
+        </div>
+        <div class="cell">
+            <p><strong>Category Id</strong> : @Model.CategoryId</p>
+        </div>
+        <div class="cell">
+            <p><strong>Category Name</strong> : @Model.CategoryName</p>
+        </div>
+        <button type="submit">Yes Delete</button>
+    </form>
+</div>
+
+

@@ -1,0 +1,58 @@
+﻿@model MachineCode_NimapInfotech.Models.productViewModel
+
+@{
+    int c;
+    if (Model.TotalRecordsCount % Model.pagesize == 0)
+    {
+        c = (Model.TotalRecordsCount/Model.pagesize);
+    }
+    else
+    {
+        c = (Model.TotalRecordsCount/Model.pagesize) + 1;
+    }
+}
+
+@section Cssfiles{
+    <link rel="stylesheet" href="~/Content/index.css" />
+}
+
+<div class="ContainerDiv ContainerDiv2">
+    <h2 class="Heading">Product Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category Id</th>
+                <th>Category Name</th>
+                <th colspan="2">Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listofProducts)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Category.CategoryId</td>
+                    <td>@item.Category.CategoryName</td>
+
+                    <td>@Html.ActionLink("Update", "Update", "Product", new { id = item.ProductId }, null)</td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Product", new { id = item.ProductId }, null)</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6">@Html.ActionLink("Insert a new Record", "Create", "Product")</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Showing @((Model.PageNumber*Model.pagesize)-(Model.pagesize-1)) - @(Model.PageNumber*Model.pagesize) of @Model.TotalRecordsCount Results</h3>
+   
+    <div class="Pageholder">
+        @for (int i = 1; i <= c; i++)
+        {
+            <a href="/product/index/?page=@i" class=@((i==Model.PageNumber)?"active":null)>@i</a>
+        }
+    </div>
+</div>
+
